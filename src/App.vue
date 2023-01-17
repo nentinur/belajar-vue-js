@@ -1,6 +1,7 @@
 <template>
-  <h2>{{ halo }}</h2>
-  <button @click="changeName">{{bahasa}}</button>
+  <!-- data binding digunakan untuk membuat data dinamis -->
+  <!-- notasinya: v-bind dapat dipersingkat juga dengan: -->
+  <a :href="url">Go To Gihub Nenti</a>
 </template>
 
 <script>
@@ -10,16 +11,10 @@ export default {
   name: 'App',
   data() {
     return {
-      halo: 'Halo, Selamat datang di Website Nenti',
-      bahasa: 'Turn To English'
+      url:'https://github.com/nentinur'
     }   
   },
-  methods: {
-    changeName() {
-      this.halo = "Hi, Welcome to Nenti's website",
-      this.bahasa = 'Bahasa Indonesia'
-    }
-  }
+  
 }
 </script>
 
