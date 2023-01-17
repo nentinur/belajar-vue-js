@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       halo: 'Halo, Selamat datang di Website Nenti',
-      bahasa: 'English'
+      bahasa: 'Turn To English'
     }   
   },
   methods: {
