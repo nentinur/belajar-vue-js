@@ -1,7 +1,8 @@
 <template>
-  <!-- menampilkan isi dari component Header -->
-  <!-- mengirimkan props dari App.vue ke Header.vue -->
-  <Header :text="text" />
+  <!-- PROPS - gunakan untuk mengirimkan data dari komponen induk ke komponen anak -->
+  <!-- CUSTOM EVENT - gigunakan untuk mengirimkan data dari komponen anak ke komponen induk -->
+  
+  <Header @changeTitle="ubahText" :text="text" />
 </template>
 
 <script>
@@ -11,13 +12,18 @@ export default {
   name: 'App',
   // jangan lupa ditulis disini jika mau digunakan
   components: {
-    Header
+    Header,
   },
   data() {
     return {
       text: "ini props yang dinamis menggunakan data binding",
     };
   },
+  methods: {
+    ubahText(newText) {
+      this.text = newText
+    }
+  }
 };
 </script>
 

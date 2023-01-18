@@ -2,13 +2,24 @@
 <template>
     <!-- menampilkan props -->
     <h2>PROPS: {{ text }}</h2>
+    <button @click="changeText">Ubah Text</button>
 </template>
 
 <script>
 export default {
     name: "Header",
     // menangkap props dari App.vue
-    props:["text"],
+    props: ["text"],
+    data() {
+        return {
+            newText:"ini text dari header.vue"
+        }
+    },
+    methods: {
+        changeText() {
+            this.$emit("changeTitle", this.newText)
+        }
+    }
 }
 </script>
 
