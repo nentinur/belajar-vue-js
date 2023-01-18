@@ -1,10 +1,22 @@
 <template>
-  <!-- TWO WAY DATA BINDING
-  Data Binding ini berlaku 2 arah, jika kita mengubah tulisan yang ada di input text, 
-  maka data di variabel nama juga berubah -->
-  <input type="text" v-model="nama">
-  <h5>Nama: {{ nama }}</h5>
-  
+  <!-- CONDITIONAL DAN LOOP -->
+
+  <!-- IF
+  If ini akan menampilkan data, jika datanya ada,
+  dan menampilkan tulisan "No Data Found", jika datanya tidak ada -->
+  <div v-if="product.length">
+  <ul>
+    <!-- FOR -->
+    <li v-for="item in product" :key="item.id">
+      {{ item.title }} - {{ item.price }}
+    </li>
+  </ul>
+  </div>
+  <div v-else>
+    <p>
+      No Data Found
+    </p>
+  </div>
 </template>
 
 <script>
@@ -14,8 +26,14 @@ export default {
   name: 'App',
   data() {
     return {
-      // begitu juga jika merubah data disini, maka nama di box input juga berubah
-      nama:"Nenti"
+      
+      product: [
+        // { id: 1, title: "product 1", price: 30000 },
+        // { id: 2, title: "product 2", price: 20000 },
+        // { id: 3, title: "product 3", price: 10000 },
+        // { id: 4, title: "product 4", price: 50000 },
+        // { id: 5, title: "product 5", price: 40000 }
+      ]
     }   
   },
   
