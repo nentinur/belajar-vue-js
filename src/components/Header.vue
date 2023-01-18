@@ -1,11 +1,14 @@
 <!-- component baru -->
 <template>
-    <h2>Hello World</h2>
+    <!-- menampilkan props -->
+    <h2>PROPS: {{ text }}</h2>
 </template>
 
 <script>
 export default {
-    name:"Header"
+    name: "Header",
+    // menangkap props dari App.vue
+    props:["text"],
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <!-- menampilkan isi dari component Header -->
-  <Header />
+  <!-- mengirimkan props dari App.vue ke Header.vue -->
+  <Header :text="text" />
 </template>
 
 <script>
@@ -11,8 +12,13 @@ export default {
   // jangan lupa ditulis disini jika mau digunakan
   components: {
     Header
-  }
-}
+  },
+  data() {
+    return {
+      text: "ini props yang dinamis menggunakan data binding",
+    };
+  },
+};
 </script>
 
 <style>
