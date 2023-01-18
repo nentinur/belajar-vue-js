@@ -1,19 +1,13 @@
 <template>
-  <!-- LIFECYCLE HOOKS
-  LifeCycle Hooks adalah jendela dimana Library yang digunakan bekerja dibalik layar
-  LifeCycle hooks memungkinakan untuk mengetahui komponen yang dibuat ditambahkan ke DOM, diperbarui, atau dihancurkan -->
-  <div v-if="products.length">
+  <!-- COMPUTED PROPERTIES
+    properti yang dapat digunakan untuk mendefinisikan data yang nilainya tergantung dari data lain
+  -->
+  <input type="text" placeholder="Cari" v-model="cari">
   <ul>
-    <li v-for="item in products" :key="item.id">
+    <li v-for="item in caridata" :key="item.id">
       {{ item.title }} - {{ item.price }}
     </li>
   </ul>
-  </div>
-  <div v-else>
-    <p>
-      No Data Found
-    </p>
-  </div>
 </template>
 
 <script>
@@ -23,38 +17,31 @@ export default {
   name: 'App',
   data() {
     return {
+      cari:"",
       products: []
     }   
   },
-  // LifeCycle Hooks
-  // urutan dijalankannya adalah beforeCreate - created - beforeMount - mount,
-  // meskipun tataletaknya diacak, urutannya akan tetap seperti itu
-  beforeCreate() {
-    // jika ingin menjalankan fungsi, yang ingin dieksekusi sebelum komponen dibuat, maka kita harus meletakkannya di beforeCreate
-    console.log('Before Create')
-  },
   created() {
-    // jika ingin membuat perintah setelah komponen dibuat, maka kita meletakkannya di created
-    console.log('Created')
-
     // data ini dipanggil setelah komponen dibuat di lifecycle hooks
     this.products = [
-      { id: 1, title: "product 1", price: 30000 },
-      { id: 2, title: "product 2", price: 20000 },
-      { id: 3, title: "product 3", price: 10000 },
-      { id: 4, title: "product 4", price: 50000 },
-      { id: 5, title: "product 5", price: 40000 }
+      { id: 1, title: "buku", price: 30000 },
+      { id: 2, title: "penggaris", price: 20000 },
+      { id: 3, title: "pensil", price: 10000 },
+      { id: 4, title: "spidol", price: 50000 },
+      { id: 5, title: "penghapus", price: 40000 }
     ]
   },
-  beforeMount() {
-    // jika ingin menjalankan fungsi setelah created, kita harus meletakkannya di beforeMount
-    console.log('Before Mount')
-  },
-  mounted() {
-    // jika ingin menjalankan fungsi setetah komponen mounted ke DOM, maka kita harus meletakkannya di mounted
-    console.log('Mounted')
+
+  //Computed propeeties
+  computed: {
+    // disini kita akan membuat fungsi untuk mencari data product berdasakan titlenya
+    caridata() {
+      // menggunakan fungsi dari JavaScript yaitu filter() dan match()
+      return this.products.filter((item) => {
+        return item.title.match(this.cari)
+      })
+    }
   }
-  
 }
 </script>
 
@@ -63,7 +50,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
