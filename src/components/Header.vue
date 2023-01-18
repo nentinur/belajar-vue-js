@@ -19,7 +19,9 @@ export default {
         changeText() {
             this.$emit("changeTitle", this.newText)
         }
-    }
+    },
+    // untuk menghilangkan error warning karena $emit
+    emits: ["changeTitle"],
 }
 </script>
 
